@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document</title>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+    h1 {
+      text-align: center;
+    }
+    .form-section {
+      margin-bottom: 20px;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 15px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+    #postsContainer {
+      margin-top: 20px;
+    }
+    .post {
+      background-color: white;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+</style>    
+</head>
+<body>
+  <div class="container">
+    <h1> My Blog</h1>
+
+    <div class="form-section">
+      <input type="text" id="titleInput" placeholder="Blog Title" />
+      <textarea id="contentInput" placeholder="Write your thoughts..."></textarea>
+      <button onclick="addPost()">Post</button>
+    </div>
+
+    <hr>
+
+    <div id="postsContainer">
+      
+        <h2>Recent Posts</h2>
+        <div id="postsList"><h3> Redesigning My Blog Every Month: A UI Challenge</h3>
+        <p>Exploring the evolution of my blog's design and user experience</p>
+
+         <p>How a personal experiment taught me about creativity, constraints, and modern web design.</p>
+    </div>
+
+    </div>
+  </div>
+    <script>
+        function displayPosts() {
+        const postsList = document.getElementById("postsList");
+        postsList.innerHTML = '';
+        posts.forEach((post, index) => {
+            const postElement = document.createElement("div");
+            postElement.className = "post";
+            postElement.innerHTML = `<h3>${post.title}</h3><p>${post.content}</p>`;
+            postsList.appendChild(postElement);
+        });
+        }
+    </script>
+
+  <script>
+    let posts = [];
+
+    function addPost(){
+      const title = document.getElementById("titleInput").value;
+      const content = document.getElementById("contentInput").value;
+        if (title && content) {
+            const post = { title, content };
+            posts.push(post);
+            document.getElementById("titleInput").value = '';
+            document.getElementById("contentInput").value = '';
+            displayPosts();
+        } else {
+            alert("Please fill in both fields.");
+        }
+    }
+  </script>
+</body>
+</html>
